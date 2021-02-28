@@ -16,9 +16,9 @@ class ClientesApiView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        retorno = request.data['leads'][0]['last_conversion']['content']
-        status_lead = request.data['leads'][0]['custom_fields']['Você já é nosso cliente?']
-        if status_lead != "Já sou cliente Infolink":
+        retorno = request.data['leads'][0]['last_conversion']
+        status_lead = request.data['leads'][0]['first_conversion']['Você já é nosso cliente?']
+        if status_lead == "Ainda não sou cliente":
             telefone = request.data['leads'][0]['mobile_phone']
             cidade = request.data['leads'][0]['city']
             if telefone is None:
@@ -26,8 +26,8 @@ class ClientesApiView(APIView):
             if cidade is None:
                 cidade = "Cidade não informada"
             dados_lead2 = {
-                "nome": retorno['Nome'],
-                "email": retorno['email_lead'],
+                "nome": retorno['name'],
+                "email": retorno['email'],
                 "cidade": cidade,
                 "telefone": telefone,
                 "origem": 1.03
