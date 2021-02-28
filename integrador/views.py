@@ -32,7 +32,7 @@ class ClientesApiView(APIView):
                 "telefone": telefone,
                 "origem": 1.03
             }
-            url = "https://homologa.infolinktelecom.com/api/api/events/new_suspect"
+            url = "https://erp.infolinktelecom.com/api/api/events/new_suspect"
             headers = {
                 'Authorization-Token': '488aec95-0bd0-11ea-956c-5e2f033a4602'
             }
