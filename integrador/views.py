@@ -53,3 +53,6 @@ def serializar_cliente(dados_lead):
     serializer.is_valid(raise_exception=True)
     serializer.save()
     return serializer
+
+def index(request):
+    return render(request, 'index.html')
