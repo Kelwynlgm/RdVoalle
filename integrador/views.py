@@ -16,7 +16,7 @@ class ClientesApiView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        retorno = request.data['leads'][0]['last_conversion']
+        retorno = request.data['leads'][0]
         status_lead = request.data['leads'][0]['first_conversion']['content']['Você já é nosso cliente?']
         if status_lead == "Ainda não sou cliente":
             telefone = request.data['leads'][0]['mobile_phone']
