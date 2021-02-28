@@ -20,7 +20,7 @@ class ClientesApiView(APIView):
         status_lead = request.data['leads'][0]['custom_fields']['Você já é nosso cliente?']
         if status_lead != "Já sou cliente Infolink":
             telefone = request.data['leads'][0]['mobile_phone']
-            cidade = request.data['leads'][0]['custom_fields']['Sua cidade']
+            cidade = request.data['leads'][0]['city']
             if telefone is None:
                 telefone = request.data['leads'][0]['personal_phone']
             if cidade is None:
