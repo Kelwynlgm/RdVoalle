@@ -1,0 +1,52 @@
+body {
+    background-color: #FFA500;
+}
+
+h1{
+    color: white;
+    text-align: center;
+}
+
+p {
+    color: black;
+    text-align: justify;
+}
+
+.div1 {
+    background-color: #00008B;
+    margin: 0 auto;
+    width: 1250px;
+    height: 600px;
+    padding: 10px;
+    border: 1.5px solid white;
+    border-radius: 5px;
+    box-shadow: 5px 5px #00008B;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+}
+
+.div1 img{
+        display: flex;
+        margin: 0 35%;
+}
+
+button{
+    margin: 0 40%;
+    width: 180px;
+    text-align: center;
+    line-height: 40px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+input[type=submit]{
+    margin: 0 40%;
+    text-align: center;
+    height: 40px;
+    margin-top: 10px;
+    width: 180px;
+    cursor: pointer;
+}

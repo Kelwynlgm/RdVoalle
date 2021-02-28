@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>API REST - MK SOLUTIONS</title>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+</head>
+<body>
+    <div class="div1">
+        <img src="{% static 'images/unnamed.png' %}"/>
+        <h1>API REST - MK SOLUTIONS/RD STATION</h1>
+        <button name="button1" type="submit" onclick="location.href='{% url 'admin:index' %}'"
+        >Visualizar Leads</button>
+    </div>
+
+</body>
+</html>
