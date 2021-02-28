@@ -17,7 +17,7 @@ class ClientesApiView(APIView):
 
     def post(self, request):
         retorno = request.data['leads'][0]
-        status_lead = request.data['leads'][0]['first_conversion']['content']['Você já é nosso cliente?']
+        status_lead = request.data['leads'][0]['custom_fields']['Você já é nosso cliente?']
         if status_lead == "Ainda não sou cliente":
             telefone = request.data['leads'][0]['mobile_phone']
             cidade = request.data['leads'][0]['city']
