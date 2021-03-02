@@ -23,22 +23,24 @@ class ClientesApiView(APIView):
             cidade = request.data['leads'][0]['city']
             if telefone is None:
                 telefone = request.data['leads'][0]['personal_phone']
+            if "+55" in telefone:
+                novo_telefone = (telefone.replace("+55", ""))
             if cidade is None:
                 cidade = "Cidade não informada"
             dados_lead2 = {
-                "nome": retorno['name'],
+                "nome": retorno['name'].upper(),
                 "email": retorno['email'],
                 "cidade": cidade,
-                "telefone": telefone,
+                "telefone": novo_telefone,
                 "origem": 1.03
             }
             url = "https://erp.infolinktelecom.com/api/api/events/new_suspect"
             headers = {
                 'Authorization-Token': '488aec95-0bd0-11ea-956c-5e2f033a4602'
             }
+            serializer = serializar_cliente(dados_lead2)
             response = requests.request("POST", url, headers=headers, data=dados_lead2)
             print(response.text.encode('utf8'))
-            serializer = serializar_cliente(dados_lead2)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return HttpResponse("Já é cliente. Lead não contabilizada", status=status.HTTP_200_OK)
