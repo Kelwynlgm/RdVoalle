@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'RDVoalle.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('DB_NAME', 'd6o797ropic4do'),
+        'USER': os.environ.get('DB_USER', 'gzovkllrihozhn'),
+        'PASSWORD': os.environ.get('DB_PASS', '30a7047247eacb0fbf63cf259ce74a57bbe8ad6ce618f53ecbf3aa229f5282d4'),
+        'HOST': 'ec2-34-203-255-149.compute-1.amazonaws.com',
+        'PORT': '5432'
     }
 }
 
