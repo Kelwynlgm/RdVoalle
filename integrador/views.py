@@ -18,6 +18,7 @@ class ClientesApiView(APIView):
     def post(self, request):
         retorno = request.data['leads'][0]
         status_lead = request.data['leads'][0]['custom_fields']['Você já é nosso cliente?']
+        origem_lead = request.data['leads'][0]['first_conversion']['conversion_origin']['source']
         if status_lead == "Ainda não sou cliente":
             telefone = request.data['leads'][0]['mobile_phone']
             cidade = request.data['leads'][0]['city']
@@ -27,13 +28,46 @@ class ClientesApiView(APIView):
                 novo_telefone = (telefone.replace("+55", ""))
             if cidade is None:
                 cidade = "Cidade não informada"
-            dados_lead2 = {
-                "nome": retorno['name'].upper(),
-                "email": retorno['email'],
-                "cidade": cidade,
-                "telefone": novo_telefone,
-                "origem": 1.03
-            }
+            if origem_lead == "linklist.bio":
+                dados_lead2 = {
+                    "nome": retorno['name'].upper(),
+                    "email": retorno['email'],
+                    "cidade": cidade,
+                    "telefone": novo_telefone,
+                    "origem": 1.13
+                }
+            elif origem_lead == "infolinktelecom.com":
+                dados_lead2 = {
+                    "nome": retorno['name'].upper(),
+                    "email": retorno['email'],
+                    "cidade": cidade,
+                    "telefone": novo_telefone,
+                    "origem": 1.12
+                }
+            elif origem_lead == "Facebook":
+                dados_lead2 = {
+                    "nome": retorno['name'].upper(),
+                    "email": retorno['email'],
+                    "cidade": cidade,
+                    "telefone": novo_telefone,
+                    "origem": 1.14
+                }
+            elif origem_lead == "Google":
+                dados_lead2 = {
+                    "nome": retorno['name'].upper(),
+                    "email": retorno['email'],
+                    "cidade": cidade,
+                    "telefone": novo_telefone,
+                    "origem": 1.11
+                }
+            else:
+                dados_lead2 = {
+                    "nome": retorno['name'].upper(),
+                    "email": retorno['email'],
+                    "cidade": cidade,
+                    "telefone": novo_telefone,
+                    "origem": 1.03
+                }
             url = "https://erp.infolinktelecom.com/api/api/events/new_suspect"
             headers = {
                 'Authorization-Token': '488aec95-0bd0-11ea-956c-5e2f033a4602'
